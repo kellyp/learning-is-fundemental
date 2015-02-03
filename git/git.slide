@@ -1,0 +1,134 @@
+Git Down On It
+10 Feb 2015
+Tags: git fun
+
+Kelly Plummer
+Fun guy
+kelly.plummer@nike.com
+
+* Git Background
+
+Distrubuted Version Control
+
+- fully mirrored repo exists locally
+- built in backups
+- multiple remote repos
+
+* Git History
+
+- before 2002 Linux was developed using patches and archive files
+- 2002 - 2005 started using proprietary DVCS Bitkeeper
+- 2005 Bitkeeper revokes free of charge status
+- 2005 Git project started as response with lessons learned
+
+* Git Goals
+
+- Speed
+- Simple design
+- Strong support for non-linear development (thousands of parallel branches)
+- Fully distributed
+- Able to handle large projects like the Linux kernel efficiently (speed and data size)
+
+* Git Inside
+
+- Stream of Snapshots
+- Local
+- Integrity
+
+* Git States
+- Three States of Git
+- Commited - Stored in your local DB
+- Modified - Modifications waiting to be committed
+- Staged - Marked a modified file to be included in the next commit
+
+* Git Command
+- Fully operational git
+- GUIs vary in feature support
+- Strongly recommended
+
+* Git Going
+.link http://git-scm.com/video/get-going
+5:00
+
+* Git Links
+.link http://git-scm.com/docs/gittutorial
+.link http://think-like-a-git.net
+.link https://www.atlassian.com/git/
+.link http://git-scm.com/video/get-going
+
+* Stash
+
+* Stash Basics
+- Centralized storage
+- Management of repos
+- User friendly repo views
+- Project organizational management
+
+* Stash Pull requests
+- View Diffs
+- Lightweight code review
+- Commenting
+- Approvals
+
+* Stash Links
+- Key management
+.link https://confluence.atlassian.com/display/STASH/Creating+SSH+keys
+.link https://confluence.atlassian.com/display/STASH/SSH+user+keys+for+personal+use
+
+- Pull requests
+.link https://confluence.atlassian.com/display/STASH/Using+pull+requests+in+Stash
+.link https://www.youtube.com/watch?x-yt-ts=1422579428&x-yt-cl=85114404&feature=player_detailpage&v=QWS2yXehCNk#t=1046
+.link https://www.youtube.com/watch?x-yt-ts=1422579428&feature=player_detailpage&x-yt-cl=85114404&v=KsIessdQ6GI#t=329
+
+* Branching Strategies
+
+* Gitflow
+.image images/gitflow.png
+
+* Gitflow for a Lifetime Branches
+- master - production ready
+- develop - reflects the latest development changes
+
+* Gitflow Best Supporting Branches
+- Feature branches
+- Release branches
+- Hotfix branches
+
+* Gitflow Feature Branches
+- branched from develop
+- merged into develop
+- named feature/*
+- exists only as long a feature is in dev
+
+* Gitflow Feature Branches flow
+  $ git checkout -b feature/new-hotness develop
+  ...
+  $ git commit -m "awesome new feature" -a
+  ...
+  $ git checkout develop
+  Switched to branch 'develop'
+  $ git merge --no-ff feature/new-hotness
+  Updating ea1b82a..05e9557
+  (Summary of changes)
+  $ git branch -d feature/new-hotness
+  Deleted branch feature/new-hotness (was 05e9557).
+  $ git push origin develop
+
+* Gitflow Release Branches
+- branch from develop
+- merge into develop and master
+- named release-*
+- exists for metadata (versioning, dates) preparing for a release
+- version is assigned at release branch creation only
+
+* Gitflow Release Branches flow
+  $ git checkout -b release-x.y develop
+  ...
+  $ git checkout master
+  Switched to branch 'master'
+  $ git merge --no-ff release-x.y
+  Merge made by recursive.
+  (Summary of changes)
+  $ git tag -a x.y
+
+* Gitflow Hotfix
