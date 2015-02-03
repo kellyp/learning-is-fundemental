@@ -3,8 +3,9 @@ Git Down On It
 Tags: git fun
 
 Kelly Plummer
-Fun guy
+
 kelly.plummer@nike.com
+kelly@dualspark.com
 
 * Git Background
 
@@ -46,15 +47,18 @@ Distrubuted Version Control
 - GUIs vary in feature support
 - Strongly recommended
 
+* Git Graphing
+.image images/log.png
+
+
 * Git Going
-.link http://git-scm.com/video/get-going
-5:00
+.link http://git-scm.com/video/get-going http://git-scm.com/video/get-going (4:26)
 
 * Git Links
-.link http://git-scm.com/docs/gittutorial
-.link http://think-like-a-git.net
-.link https://www.atlassian.com/git/
-.link http://git-scm.com/video/get-going
+.link http://git-scm.com/docs/gittutorial http://git-scm.com/docs/gittutorial
+.link http://think-like-a-git.net http://think-like-a-git.net
+.link https://www.atlassian.com/git/ https://www.atlassian.com/git/
+.link http://git-scm.com/video/get-going http://git-scm.com/video/get-going
 
 * Stash
 
@@ -71,18 +75,20 @@ Distrubuted Version Control
 - Approvals
 
 * Stash Links
-- Key management
-.link https://confluence.atlassian.com/display/STASH/Creating+SSH+keys
-.link https://confluence.atlassian.com/display/STASH/SSH+user+keys+for+personal+use
 
 - Pull requests
 .link https://confluence.atlassian.com/display/STASH/Using+pull+requests+in+Stash
 .link https://www.youtube.com/watch?x-yt-ts=1422579428&x-yt-cl=85114404&feature=player_detailpage&v=QWS2yXehCNk#t=1046
 .link https://www.youtube.com/watch?x-yt-ts=1422579428&feature=player_detailpage&x-yt-cl=85114404&v=KsIessdQ6GI#t=329
 
+- Key management
+.link https://confluence.atlassian.com/display/STASH/Creating+SSH+keys
+.link https://confluence.atlassian.com/display/STASH/SSH+user+keys+for+personal+use
+
 * Branching Strategies
 
 * Gitflow
+*  
 .image images/gitflow.png
 
 * Gitflow for a Lifetime Branches
@@ -132,3 +138,47 @@ Distrubuted Version Control
   $ git tag -a x.y
 
 * Gitflow Hotfix
+- branch for master or release-x.y
+- merge into develop and master
+- named hotfix-x.y.z
+- similar to release branches but unplanned
+
+* Gitflow Hotfix Branches flow
+  $ git checkout -b hotfix-x.y.z master
+  ...
+  $ git commit -m "critical patch" -a
+  ...
+  $ git checkout master
+  Switched to branch 'master'
+  $ git merge --no-ff hotfix-x.y.z
+  Merge made by recursive.
+  (Summary of changes)
+  $ git tag -a x.y.z
+
+* Gitflow links
+
+.link http://nvie.com/posts/a-successful-git-branching-model/ http://nvie.com/posts/a-successful-git-branching-model/
+.link https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+* Github flow
+*  
+
+.image images/githubflow.png
+
+* Github flow deep dive
+- master = production
+- versioning is less important because of constant deployment
+- little bugs, roll forward, blah blah blah
+- same process for new features and security issues
+
+* Github flow steps
+1. create descriptively named branch from master
+2. create pull request for branch when feature is complete
+3. deploy feature
+
+* Github flow links
+
+.link https://guides.github.com/introduction/flow/index.html https://guides.github.com/introduction/flow/index.html
+.link http://scottchacon.com/2011/08/31/github-flow.html http://scottchacon.com/2011/08/31/github-flow.html
+
+* Thank You!
